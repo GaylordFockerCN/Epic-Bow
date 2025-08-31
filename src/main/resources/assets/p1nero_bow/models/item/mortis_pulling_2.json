@@ -1,0 +1,6 @@
+{
+    "parent": "p1nero_bow:item/mortis",
+    "textures": {
+      "layer0": "p1nero_bow:item/mortis_2"
+    }
+}

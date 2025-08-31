@@ -1,0 +1,12 @@
+{
+	"attributes":
+	{
+		"common":
+		{
+			"impact":0.5,
+            "speed_bonus": -3.5,
+            "max_strikes":10
+		}
+	},
+	"type":"p1nero_bow:bow"
+}
