@@ -10,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import yesman.epicfight.api.animation.AnimationManager;
@@ -56,6 +57,14 @@ public class MortisBowInnateSkill extends WeaponInnateSkill {
             //自己写个充能用，从物品判断防止切武器技能还在
         container.getExecutor().getEventListener().addEventListener(PlayerEventListener.EventType.DEAL_DAMAGE_EVENT_DAMAGE, EVENT_UUID, (event -> {
             if(!event.getDamageSource().isIndirect()) {
+                if(event.getDamageSource().getAnimation() == EFBowAnimations.ELBOW_2) {
+                    event.getTarget().setDeltaMovement(event.getTarget().getDeltaMovement().add(0, 0.5 * event.getDamageSource().getBaseImpact(), 0));
+                }
+                if(event.getDamageSource().getAnimation() == EFBowAnimations.ELBOW_3) {
+                    Vec3 dir = event.getTarget().position().subtract(event.getPlayerPatch().getOriginal().position()).normalize();
+                    event.getTarget().setDeltaMovement(event.getTarget().getDeltaMovement().add(dir));
+                }
+
                 return;
             }
             PlayerPatch<?> playerPatch = event.getPlayerPatch();

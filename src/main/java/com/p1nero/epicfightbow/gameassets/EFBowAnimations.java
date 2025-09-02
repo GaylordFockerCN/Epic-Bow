@@ -49,8 +49,7 @@ public class EFBowAnimations {
 
     private static void buildBowAnimations(AnimationManager.AnimationBuilder builder) {
         BOW_RUN = builder.nextAccessor("biped/bow_run", accessor -> new MovementAnimation(true, accessor, Armatures.BIPED)
-                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) ->
-                        dynamicAnimation.getPlaySpeed(livingEntityPatch, dynamicAnimation) * 2.0F)));
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> BOW_RUN.get().getPlaySpeed(livingEntityPatch, dynamicAnimation) * 2.0F)));
         BOW_AUTO1 = builder.nextAccessor("biped/bow_auto1", accessor ->
                 new ScanAttackAnimation(0.15F, 0, 0.15F, 65 / 60F, 65 / 60F,
                     InteractionHand.MAIN_HAND, EFBowColliders.BOW_SCAN, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED)
@@ -84,12 +83,12 @@ public class EFBowAnimations {
                         EFBowColliders.BOW_ELBOW, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.FALL)
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.2F))
-                        .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(8.0F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(8.0F))
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true));
 
         ELBOW_3 = builder.nextAccessor("biped/elbow_3", accessor ->
-                new AttackAnimation(0.15F, 20 / 60F, 20 / 60F, 30 / 60F, 50 / 60F,
-                        null, Armatures.BIPED.get().toolL, accessor, Armatures.BIPED)
+                new AttackAnimation(0.15F, 20 / 60F, 20 / 60F, 40 / 60F, 50 / 60F,
+                        EFBowColliders.BOW_ELBOW, Armatures.BIPED.get().handR, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.0F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(8.0F)));
