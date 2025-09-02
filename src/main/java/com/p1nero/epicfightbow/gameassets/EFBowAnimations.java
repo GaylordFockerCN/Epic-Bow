@@ -53,16 +53,19 @@ public class EFBowAnimations {
         BOW_AUTO1 = builder.nextAccessor("biped/bow_auto1", accessor ->
                 new ScanAttackAnimation(0.15F, 0, 0.15F, 65 / 60F, 65 / 60F,
                     InteractionHand.MAIN_HAND, EFBowColliders.BOW_SCAN, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
                         .addEvents(setFullBowUseTime(20 / 60F), shootIn(30 / 60F),
                                 setFullBowUseTime(50 / 60F), shootIn(60 / 60F)));
         BOW_AUTO2 = builder.nextAccessor("biped/bow_auto2", accessor ->
                 new ScanAttackAnimation(0.15F, 0, 0.15F, 65 / 60F, 65 / 60F,
                         InteractionHand.MAIN_HAND, EFBowColliders.BOW_SCAN, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
                         .addEvents(setFullBowUseTime(20 / 60F), shootIn(30 / 60F),
                                 setFullBowUseTime(50 / 60F), shootIn(60 / 60F)));
         BOW_AUTO3 = builder.nextAccessor("biped/bow_auto3", accessor ->
                 new ScanAttackAnimation(0.15F, 0, 0.15F, 100 / 60F, 120 / 60F,
                         InteractionHand.MAIN_HAND, EFBowColliders.BOW_SCAN, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
                         .addEvents(setFullBowUseTime(50 / 60F), shootIn(80/60F),
                                 setFullBowUseTime(85 / 60F), shootIn(90/60F),
                                 setFullBowUseTime(95 / 60F), shootIn(100/60F)));

@@ -86,6 +86,15 @@ public class ScanAttackAnimation extends AttackAnimation {
 
     }
 
+    protected Vec3 getCoordVector(LivingEntityPatch<?> entitypatch, AssetAccessor<? extends DynamicAnimation> dynamicAnimation) {
+        Vec3 vec3 = super.getCoordVector(entitypatch, dynamicAnimation);
+        if (entitypatch.shouldBlockMoving() && this.getProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE).orElse(false)) {
+            vec3 = vec3.scale(0.0F);
+        }
+
+        return vec3;
+    }
+
     @Nullable
     public static LivingEntity getTarget(LivingEntityPatch<?> entityPatch) {
         if(entityPatch.getTarget() != null) {

@@ -4,6 +4,7 @@ import com.p1nero.epicfightbow.EpicFightBowMod;
 import com.p1nero.epicfightbow.gameassets.EFBowAnimations;
 import com.p1nero.epicfightbow.mob_effect.EFBowEffects;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -128,8 +129,9 @@ public class MortisBowInnateSkill extends WeaponInnateSkill {
     public List<Component> getTooltipOnItem(ItemStack itemStack, CapabilityItem cap, PlayerPatch<?> playerpatch) {
         List<Component> list = new ArrayList<>();
         list.add(Component.translatable("item.p1nero_bow.mortis_innate.tooltip0").withStyle(ChatFormatting.WHITE).append(Component.literal(String.format("[%.0f]", this.consumption / 2)).withStyle(ChatFormatting.AQUA)));
-        list.add(Component.translatable("item.p1nero_bow.mortis_innate.tooltip1", EpicFightKeyMappings.WEAPON_INNATE_SKILL.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.GOLD)).withStyle(ChatFormatting.DARK_GRAY));
-        list.add(Component.translatable("item.p1nero_bow.mortis_innate.tooltip2").withStyle(ChatFormatting.DARK_GRAY));
+        list.add(Component.translatable("item.p1nero_bow.mortis_innate.tooltip1", Minecraft.getInstance().options.keyDown.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.GOLD)).withStyle(ChatFormatting.DARK_GRAY));
+        list.add(Component.translatable("item.p1nero_bow.mortis_innate.tooltip2", EpicFightKeyMappings.WEAPON_INNATE_SKILL.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.GOLD)).withStyle(ChatFormatting.DARK_GRAY));
+        list.add(Component.translatable("item.p1nero_bow.mortis_innate.tooltip3").withStyle(ChatFormatting.DARK_GRAY));
         return list;
     }
 
