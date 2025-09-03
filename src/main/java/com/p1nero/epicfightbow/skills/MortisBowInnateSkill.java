@@ -50,12 +50,7 @@ public class MortisBowInnateSkill extends WeaponInnateSkill {
     @Override
     public void onInitiate(SkillContainer container) {
         super.onInitiate(container);
-        container.getExecutor().getEventListener().addEventListener(PlayerEventListener.EventType.DEAL_DAMAGE_EVENT_ATTACK, EVENT_UUID, (event -> {
-            if(event.getDamageSource().isIndirect()){
-                event.getTarget().invulnerableTime = 0;
-            }
-        }));
-            //自己写个充能用，从物品判断防止切武器技能还在
+        //自己写个充能用，从物品判断防止切武器技能还在
         container.getExecutor().getEventListener().addEventListener(PlayerEventListener.EventType.DEAL_DAMAGE_EVENT_DAMAGE, EVENT_UUID, (event -> {
             if(!event.getDamageSource().isIndirect()) {
                 if(event.getDamageSource().getAnimation() == EFBowAnimations.ELBOW_2) {
@@ -87,7 +82,6 @@ public class MortisBowInnateSkill extends WeaponInnateSkill {
     public void onRemoved(SkillContainer container) {
         super.onRemoved(container);
         container.getExecutor().getEventListener().removeListener(PlayerEventListener.EventType.DEAL_DAMAGE_EVENT_DAMAGE, EVENT_UUID);
-        container.getExecutor().getEventListener().removeListener(PlayerEventListener.EventType.DEAL_DAMAGE_EVENT_ATTACK, EVENT_UUID);
     }
 
     @Override
